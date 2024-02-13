@@ -1,6 +1,7 @@
 module.exports = {
   presets: ["module:@react-native/babel-preset"],
   plugins: [
+    "react-native-reanimated/plugin",
     [
       "module-resolver",
       {
@@ -16,6 +17,7 @@ module.exports = {
           "@/enums": "./app/enums",
           "@/utils": "./app/utils",
           "@/hooks": "./app/hooks",
+          "@/libs": "./app/libs",
         },
       },
     ],

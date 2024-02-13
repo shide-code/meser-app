@@ -1,1 +1,1 @@
-export * from "./DataDisplay";
+export * from "./core";

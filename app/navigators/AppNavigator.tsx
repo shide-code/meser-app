@@ -4,18 +4,32 @@ import {
   NavigationContainer,
   NavigationContainerEventMap,
 } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+  createNativeStackNavigator,
+} from "@react-navigation/native-stack";
 import { useEffect, useMemo } from "react";
 import { useBackButtonHandler, navigationRef } from "./navigationUtilities";
 import { onlineManager } from "@tanstack/react-query";
 import { useBottomSheetModal } from "@gorhom/bottom-sheet";
 import NetInfo from "@react-native-community/netinfo";
 import BaseConfig from "@/configs/config.base";
+import { AuthStack, AuthStackParamList } from "./stacks";
 
 export type AppStackParamList = {
   Onboard: undefined;
-};
+} & AuthStackParamList;
+export type AppScreenProps = NativeStackScreenProps<
+  AppStackParamList,
+  "Onboard"
+>;
+export type AppNavScreen = NativeStackNavigationProp<
+  AppStackParamList,
+  "Onboard"
+>;
 const Stack = createNativeStackNavigator<AppStackParamList>();
+export type AppStack = typeof Stack;
 export const AppStack = () => {
   const navigator = useMemo(() => {
     return (
@@ -26,6 +40,7 @@ export const AppStack = () => {
         }}
       >
         <Stack.Screen name="Onboard" component={OnboardScreen} />
+        {AuthStack({ Stack })}
       </Stack.Group>
     );
   }, []);

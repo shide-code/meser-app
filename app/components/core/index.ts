@@ -1,3 +1,4 @@
+export * from "./Bar";
 export * from "./Container";
 export * from "./DataDisplay";
 export * from "./DataAction";

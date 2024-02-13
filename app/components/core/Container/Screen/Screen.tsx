@@ -203,8 +203,6 @@ export function Screen(props: ScreenProps) {
 
   return (
     <View style={[$containerStyle, { backgroundColor }, insetPadding]}>
-      <StatusBar animated {...StatusBarProps} style={statusBarStyle} />
-
       <Column contentStyle="fitContent">{Header ?? Header}</Column>
 
       <KeyboardAvoidingView

@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   AnimateableView,
   Button,
@@ -7,15 +8,13 @@ import {
   Spacer,
   Typography,
 } from "@/components";
+import { AppScreenProps, goToAuth } from "@/navigators";
 import { spacing } from "@/themes";
 
-export const OnboardScreen = () => {
+export const OnboardScreen: FC<AppScreenProps> = _props => {
+  const { navigation } = _props;
   const Header = () => (
-    <Column
-      padding={{ v: spacing.large - 4 }}
-      margin={{ l: spacing.tiny }}
-      alignment="center"
-    >
+    <Column height={56} arrangement="center" alignment="center">
       <Illustration name="meser-logo" size={88} />
     </Column>
   );
@@ -43,7 +42,11 @@ export const OnboardScreen = () => {
 
       <Spacer length={spacing.huge} />
       <AnimateableView config={{ animation: "bounce", duration: 2000 }}>
-        <Button typeButton="filled" theme="accent">
+        <Button
+          typeButton="filled"
+          theme="accent"
+          onPress={() => goToAuth(navigation)}
+        >
           Lanjutkan
         </Button>
       </AnimateableView>

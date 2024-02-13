@@ -18,6 +18,7 @@ export const Button = forwardRef((_props: IButtonProps, _) => {
     typeButton = "filled",
     rounded = "full",
     children,
+    disabled,
     ...props
   } = _props;
 
@@ -27,22 +28,34 @@ export const Button = forwardRef((_props: IButtonProps, _) => {
       $baseStyleButton,
       {
         backgroundColor:
-          typeButton === "filled" ? colorsTheme[theme].normal : "transparent",
+          typeButton === "filled"
+            ? disabled
+              ? colorsTheme.button.disable
+              : colorsTheme[theme].normal
+            : "transparent",
       },
-      pressed && {
-        backgroundColor:
-          typeButton === "filled" ? colorsTheme[theme].hover : "transparent",
-      },
+      pressed &&
+        !disabled && {
+          backgroundColor:
+            typeButton === "filled" ? colorsTheme[theme].hover : "transparent",
+        },
       $styleBorderRadius,
       {
         borderWidth: typeButton === "outlined" ? 2 : 0,
         borderColor:
-          typeButton === "outlined" ? colorsTheme[theme].normal : "transparent",
+          typeButton === "outlined"
+            ? disabled
+              ? colorsTheme.button.disable
+              : colorsTheme[theme].normal
+            : "transparent",
       },
-      pressed && {
-        borderColor:
-          typeButton === "outlined" ? colorsTheme[theme].hover : "transparent",
-      },
+      pressed &&
+        !disabled && {
+          borderColor:
+            typeButton === "outlined"
+              ? colorsTheme[theme].hover
+              : "transparent",
+        },
     ];
   }
 
@@ -52,16 +65,19 @@ export const Button = forwardRef((_props: IButtonProps, _) => {
       {
         color:
           typeButton !== "filled"
-            ? colorsTheme[theme].normal
+            ? disabled
+              ? colorsTheme.button.disable
+              : colorsTheme[theme].normal
             : colorsTheme.surface[1],
       },
 
-      pressed && {
-        color:
-          typeButton === "filled"
-            ? colorsTheme.surface[2]
-            : colorsTheme[theme].hover,
-      },
+      pressed &&
+        !disabled && {
+          color:
+            typeButton === "filled"
+              ? colorsTheme.surface[2]
+              : colorsTheme[theme].hover,
+        },
     ];
   }
 

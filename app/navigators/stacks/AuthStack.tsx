@@ -1,8 +1,12 @@
-import { AuthScreen } from "@/screens";
+import { AuthScreen, VerificationScreen } from "@/screens";
 import { AppStack } from "../AppNavigator";
 
 export type AuthStackParamList = {
   Main: undefined;
+  Verification: {
+    method: "whatsapp" | "sms";
+    phoneNumber: string;
+  };
 };
 
 interface Props {
@@ -19,6 +23,7 @@ export const AuthStack = ({ Stack }: Props) => {
       }}
     >
       <Stack.Screen name="Main" component={AuthScreen} />
+      <Stack.Screen name="Verification" component={VerificationScreen} />
     </Stack.Group>
   );
 };

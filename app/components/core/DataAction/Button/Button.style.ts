@@ -11,5 +11,5 @@ export const $baseStyleButton: StyleProp<ViewStyle> = {
 
 export const $baseTextStyle: StyleProp<TextStyle> = {
   fontSize: typographySize.body1.fontSize,
-  fontWeight: "bold",
+  fontFamily: "Nunito-Bold",
 };
